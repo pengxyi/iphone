@@ -15,11 +15,11 @@
       text-align: center;
       padding: 20px;
     }
-
     .right {
       float: right;
-      padding: 20px;
+      padding: 60px;
     }
+
   </style>
 
 </head>
@@ -112,11 +112,11 @@
       }
     };
 
-    var pengxing = {
+    var pengxin = {
       code: "0",
       data: {
         avatar: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532673938394&di=0bf099e1b7837ae5326aac0b08eb91ba&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01683459f30456a801216a4bf5e9e6.jpg%402o.jpg",
-        name: "彭新",
+        name: "彭鑫",
         vip: "是",
         price: "8688.00",
         price1: "7989.00",
@@ -146,7 +146,7 @@
           if (user==1){
              var current_user = pengyi;
       }else if(user==2){
-             var current_user = pengxing;
+             var current_user = pengxin;
       }
 
       console.log(user);
@@ -158,13 +158,13 @@
         $('#price1').text(pengyi.data.price1);
         $('#money0').text(pengyi.data.money);
         $('#myModal').modal('show')
-      } else if(current_user == pengxing) {
-      $("#avatar0").attr("src", pengxing.data.avatar);
-      $('#name0').text(pengxing.data.name);
-      $('#vip0').text(pengxing.data.vip);
-      $('#price0').text(pengxing.data.price);
-      $('#price1').text(pengxing.data.price1);
-      $('#money0').text(pengxing.data.money);
+      } else if(current_user == pengxin) {
+      $("#avatar0").attr("src", pengxin.data.avatar);
+      $('#name0').text(pengxin.data.name);
+      $('#vip0').text(pengxin.data.vip);
+      $('#price0').text(pengxin.data.price);
+      $('#price1').text(pengxin.data.price1);
+      $('#money0').text(pengxin.data.money);
       $('#myModal').modal('show')
     }else {
       alert("需要选择购物人")
