@@ -66,7 +66,7 @@
           <div class="q1">
             图像:<img id="avatar0" width=“50px” height="50px" src="" /></br>
             姓名:<span type="text" id="name0"></span></br>
-            会员状态:<span type="text" id="vip"></span></br>
+            会员状态:<span type="text" id="vip0"></span></br>
             iPhone价格:<span type="text" id="price0"></span></br>
             打折后iPhone价格:<span type="text" id="price1"></span></br>
             有多少钱:<span type="text" id="money0"></span></br>
@@ -74,7 +74,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-          <button type="button" class="btn btn-primary">确定</button>
+          <button type="button">确定</button>
         </div>
       </div>
     </div>
@@ -103,6 +103,7 @@
         name: "彭毅",
         vip: "不是",
         price: "8688.00",
+        price1: "无打折",
         money: "8888.00",
         address: {
           addres_one: "上海市奉贤区",
@@ -152,8 +153,9 @@
       if (current_user == pengyi) {
         $("#avatar0").attr("src", pengyi.data.avatar);
         $('#name0').text(pengyi.data.name);
-        $('#vip').text(pengyi.data.vip);
+        $('#vip0').text(pengyi.data.vip);
         $('#price0').text(pengyi.data.price);
+        $('#price1').text(pengyi.data.price1);
         $('#money0').text(pengyi.data.money);
         $('#myModal').modal('show')
       } else if(current_user == pengxing) {
