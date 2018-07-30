@@ -15,11 +15,11 @@
       text-align: center;
       padding: 20px;
     }
+
     .right {
       float: right;
       padding: 60px;
     }
-
   </style>
 
 </head>
@@ -64,14 +64,16 @@
         </div>
         <div class="current_user">
           <div class="q1">
-            图像:<img id="avatar0" width=“50px” height="50px" src="" /></br>
-            姓名:<span type="text" id="name0"></span></br>
-            会员状态:<span type="text" id="vip0"></span></br>
-            iPhone价格:<span type="text" id="price0"></span></br>
+            图像:<img id="avatar" width=“50px” height="50px" src="" /></br>
+            姓名:<span type="text" id="name"></span></br>
+            会员状态:<span type="text" id="vip"></span></br>
+            iPhone价格:<span type="text" id="price"></span></br>
             打折后iPhone价格:<span type="text" id="price1"></span></br>
-            有多少钱:<span type="text" id="money0"></span></br>
-            请选择输入地址（数字1或2）:<input type="text" id="input2"></input></br>
-            剩余的钱:<input type="text" id="input1"></input></br>
+            有多少钱:<span type="text" id="money"></span></br>
+            请选择输入地址:1.上海市奉贤区；2.河南省信阳市（数字1或2）:<input type="text" id="input1"></input>
+            </br>
+            剩余的钱:<input type="text" id="input2"></input>
+            </br>
           </div>
         </div>
         <div class="modal-footer">
@@ -94,6 +96,7 @@
         </div>
         <div class="current_user">
           <div class="q2">
+
 
           </div>
         </div>
@@ -128,6 +131,7 @@
         vip: "不是",
         price: "8688.00",
         price1: "无打折",
+        vip_price: "1",
         money: "8888.00",
         address: {
           addres_one: "上海市奉贤区",
@@ -142,6 +146,7 @@
         avatar: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1532673938394&di=0bf099e1b7837ae5326aac0b08eb91ba&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01683459f30456a801216a4bf5e9e6.jpg%402o.jpg",
         name: "彭鑫",
         vip: "是",
+        vip_price: "0.9",
         price: "8688.00",
         price1: "7989.00",
         money: "8000.00",
@@ -154,6 +159,7 @@
     };
 
     var current_user = '';
+    var arr = [ ];
     // 产品
     $('#name').text(data.data.name);
     $('#vip_price').text(data.data.vip_price);
@@ -166,91 +172,49 @@
 
     // 判断
     $("#btn").click(function() {
-       var user = $("#user option:selected").val();
-          if (user==1){
-             var current_user = pengyi;
-      }else if(user==2){
-             var current_user = pengxin;
+      var user = $("#user option:selected").val();
+      if (user == 1) {
+        current_user = pengyi;
+      } else if (user == 2) {
+        current_user = pengxin;
       }
 
-      console.log(user);
-      if (current_user == pengyi) {
-        $("#avatar0").attr("src", pengyi.data.avatar);
-        $('#name0').text(pengyi.data.name);
-        $('#vip0').text(pengyi.data.vip);
-        $('#price0').text(pengyi.data.price);
-        $('#price1').text(pengyi.data.price1);
-        $('#money0').text(pengyi.data.money);
-        $('#addres_one').text(pengyi.data.address.addres_one);
-        $('#addres_two').text(pengyi.data.address.addres_two);
-        $('#myModal').modal('show')
-
-
-        $('#pengyi.data.money').text(pengyi.data.money);
-        $('#pengyi.data.price').text(pengyi.data.price);
-        $("#trues").click(function() {
-          var input1 = $("#input1").val();
-          var input2 = $("#input2").val();
-          if(input2==1){
-              input2=pengyi.data.address.addres_one;
-          }else if(input2==2){
-            input2=pengyi.data.address.addres_two;
-          }
-             if(pengyi.data.money>pengyi.data.price){
-                  input1 = pengyi.data.money - pengyi.data.price;
-             }
-            $('#input1').val(input1);
-            $('#input2').val(input2);
-        });
-
-      } else if(current_user == pengxin) {
-      $("#avatar0").attr("src", pengxin.data.avatar);
-      $('#name0').text(pengxin.data.name);
-      $('#vip0').text(pengxin.data.vip);
-      $('#price0').text(pengxin.data.price);
-      $('#price1').text(pengxin.data.price1);
-      $('#money0').text(pengxin.data.money);
-      $('#addres_one').text(pengxin.data.address.addres_one);
-      $('#addres_two').text(pengxin.data.address.addres_two);
-      $('#myModal').modal('show')
-
-
-      $('#pengxin.data.money').text(pengxin.data.money);
-      $('#pengxin.data.price1').text(pengxin.data.price1);
-      $("#trues").click(function() {
-        var input1 = $("#input1").val();
-        var input2 = $("#input2").val();
-          if(input2==1){
-              input2=pengxin.data.address.addres_one;
-          }else if(input2==2){
-              input2=pengxin.data.address.addres_two;
-          }
-           if(pengxin.data.money>pengxin.data.price1){
-              input1 = pengxin.data.money - pengxin.data.price1;
-           }
-          $('#input1').val(input1);
-          $('#input2').val(input2);
-      });
-
-    }else {
-      alert("需要选择购物人")
-      }
-
-      $("#end").click(function() {
-          input1 =0 ;
-          input2 =0 ;
-          $('#input1').val(input1);
-          $('#input2').val(input2);
-       });
-
-
-
+      console.log(current_user);
     });
 
+    //current_user
+    $("#avatar").attr("src", current_user.data.avatar);
+    $('#name').text(current_user.data.name);
+    $('#vip').text(current_user.data.vip);
+    $('#price').text(current_user.data.price);
+    $('#vip_price').text(current_user.data.vip_price);
+    $('#money').text(current_user.data.money);
+    $('#input1').var(input1);
+    $('#input2').var(input2);
+
+      $("#trues").click(function() {
+         if(input1=1){
+           input1="上海市奉贤区";
+         }else{
+            input1="河南省信阳市";
+         }
+         if(current_user.data.money>current_user.data.price){
+           input2=current_user.data.money - current_user.data.price * current_user.data.vip_price;
+         }
+
+           var message{
+             {name:"current_user.data.name",count:"current_user.data.price";thing:"data.data.name"};
+             arr.push(message);
+           }
+      });
 
 
+       $("#jilu").click(function() {
+         for(i=1,i<arr.length-1,i++){
+           arr.q2 +="<p>+arr{name:"current_user.data.name",count:"current_user.data.price";thing:"data.data.name"}+;"
+         }
 
-
+       });
 
   </script>
 
